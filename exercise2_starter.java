@@ -1,6 +1,6 @@
 /* 
 Name: Angel Carmichael
-Date: June 12, 2024
+Date: January 13, 2026
 Description: Exercise 2 Starter Code for Writing and Reading Binary Data
 Purpose: This program writes an array of integers, a Date object, and a double value to a binary file,
 then reads the data back and displays it to verify correctness.
