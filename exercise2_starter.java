@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Exercise 2: Write and read binary data
@@ -24,50 +24,65 @@ public class exercise2_starter {
         // Data to write
         int[] numbers = {1, 2, 3, 4, 5};
         Date currentTime = new Date();
-        double value = 5.5;
-        
-        // PART 1: WRITE DATA
-        // TODO: Create DataOutputStream for "Exercise17_02.dat"
-        
-        
-        // TODO: Write the array of integers
-        // Hint: Loop through the array and use writeInt() for each element
+        double value = 5.5;   
+        int num;
+        Date newDate;
+        List<Integer> newList = new ArrayList<>();     
         
         
-        // TODO: Write the Date object
-        // Hint: Use writeLong() to write currentTime.getTime()
-        
-        
-        // TODO: Write the double value
-        
-        
-        // TODO: Close the output stream (or use try-with-resources)
-        
-        
-        System.out.println("Data written to Exercise17_02.dat");
-        
-        
-        // PART 2: READ DATA
-        // TODO: Create DataInputStream for "Exercise17_02.dat"
-        
-        
-        // TODO: Read the array of integers
-        // Hint: Create a new array and use readInt() five times
-        
-        
-        // TODO: Read the Date object
-        // Hint: Use readLong() and create new Date with that value
-        
-        
-        // TODO: Read the double value
-        
-        
-        // TODO: Close the input stream (or use try-with-resources)
-        
-        
-        // TODO: Display all the data you read
-        System.out.println("\nData read from Exercise17_02.dat:");
-        // Display array, date, and double value
-        
+        try {
+            // PART 1: WRITE DATA
+            // TODO: Create DataOutputStream for "Exercise17_02.dat"
+            DataOutputStream Output = new DataOutputStream(new FileOutputStream("Exercise17_02.dat"));
+
+            // TODO: Write the array of integers
+            // Hint: Loop through the array and use writeInt() for each element 
+            for(int i=0; i<numbers.length;i++){ 
+                Output.writeInt(numbers[i]);
+            }
+          
+            // TODO: Write the Date object
+            // Hint: Use writeLong() to write currentTime.getTime()
+            Output.writeLong(currentTime.getTime());
+
+            // TODO: Write the double value
+            Output.writeDouble(value);
+
+            // TODO: Close the output stream (or use try-with-resources)
+            Output.close();
+
+            System.out.println("Data written to Exercise17_02.dat");
+
+            // PART 2: READ DATA
+            // TODO: Create DataInputStream for "Exercise17_02.dat"
+            DataInputStream Input = new DataInputStream(new FileInputStream("Exercise17_02.dat"));
+
+            System.out.println("Reading data from Exercise17_02.dat");
+
+            // TODO: Read the array of integers
+            // Hint: Create a new array and use readInt() five times
+            while((num = Input.readInt()) != -1){
+                newList.add(num);
+            }
+
+            // TODO: Read the Date object
+            // Hint: Use readLong() and create new Date with that value
+            Long dateReader = Input.readLong();
+            newDate = new Date(dateReader);
+
+            // TODO: Read the double value
+            Input.readDouble();
+
+            // TODO: Close the input stream (or use try-with-resources)
+            Input.close();
+
+            //Display array Date and number value:
+            // System.out.println(newList);
+            System.out.println(newDate);
+            System.out.println(Input.readDouble());
+
+        } catch (Exception e) {
+            System.out.println("Something went wrong");
+        }
     }
 }
