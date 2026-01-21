@@ -10,7 +10,7 @@ Assignment name: Exercise 18.1: Compute factorial using recursion with BigIntege
 Example: 100! is a huge number with 158 digits!
  */
 import java.math.BigInteger;
-import java.util.Scanner;
+import java.util.*;
 
 public class exercise18_01 {
 
@@ -30,6 +30,11 @@ public class exercise18_01 {
      * @return n! as a BigInteger
      */
     public static BigInteger factorial(BigInteger n) {
+        // makes sure that the input is not negative
+        if (n.compareTo(BigInteger.ZERO) < 0) {
+            throw new StackOverflowError("the number must be a positive number");
+        }
+
         // TODO: Implement base case
         if (n.equals(BigInteger.ZERO)) {
             return BigInteger.ONE;
