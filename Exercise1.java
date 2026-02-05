@@ -1,7 +1,5 @@
 // Write your imports here if needed
-
 import java.util.*;
-
 public class Exercise1 {
 
     // Write your code here
@@ -35,18 +33,32 @@ public class Exercise1 {
 
         // union of the two priority queues
         PriorityQueue<String> union = new PriorityQueue<>();
-        union.addAll(PQ1);
-        union.addAll(PQ2);
-        System.out.println("The union of the two priority queues is " + union);
+        union.offer(numLine2);
+        union.offer(numLine1);
+
+        System.out.println("The union of the two priority queues is ");
+        while (!union.isEmpty()) {
+            System.out.print(union.poll() + " ");
+        }
+        System.out.println("");
 
         // difference of the two priority queues
         PriorityQueue<String> difference = new PriorityQueue<>();
         difference.addAll(PQ1);
-        System.out.println("The difference of the two priority queues is " + difference.removeAll(PQ2));
+        difference.removeAll(PQ2);
+        System.out.println("The difference of the two priority queues is ");
+        while (!difference.isEmpty()) {
+            System.out.print(difference.poll() + " ");
+        }
+        System.out.println("");
 
         // intersection of the two priority queues
         PriorityQueue<String> intersection = new PriorityQueue<>();
         intersection.addAll(PQ1);
-        System.out.println("The intersection of the two priority queues is " + intersection.retainAll(PQ2));
+        intersection.retainAll(PQ2);
+        System.out.println("The intersection of the two priority queues is ");
+        while (!intersection.isEmpty()) {
+            System.out.print(intersection.poll() + " ");
+        }
     }
 }
