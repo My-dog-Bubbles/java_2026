@@ -9,8 +9,8 @@ public class Exercise1 {
         String numLine2;
 
         // Create the 2 PriorityQueue to store the integers
-        PriorityQueue<String> PQ1 = new PriorityQueue<>();
-        PriorityQueue<String> PQ2 = new PriorityQueue<>();
+        PriorityQueue<Integer> PQ1 = new PriorityQueue<>();
+        PriorityQueue<Integer> PQ2 = new PriorityQueue<>();
 
         // line of integers read as a string
         System.out.println("Enter integers for priority queue 1: ");
@@ -25,16 +25,16 @@ public class Exercise1 {
 
         // Add each number to the PriorityQueue 1 and 2
         for (String num : numbers1) {
-            PQ1.offer(num);
+            PQ1.offer(Integer.parseInt(num));
         }
         for (String num : numbers2) {
-            PQ2.offer(num);
+            PQ2.offer(Integer.parseInt(num));
         }
 
         // union of the two priority queues
-        PriorityQueue<String> union = new PriorityQueue<>();
-        union.offer(numLine2);
-        union.offer(numLine1);
+        PriorityQueue<Integer> union = new PriorityQueue<>();
+        union.addAll(PQ1);
+        union.addAll(PQ2);
 
         System.out.println("The union of the two priority queues is ");
         while (!union.isEmpty()) {
@@ -43,7 +43,7 @@ public class Exercise1 {
         System.out.println("");
 
         // difference of the two priority queues
-        PriorityQueue<String> difference = new PriorityQueue<>();
+        PriorityQueue<Integer> difference = new PriorityQueue<>();
         difference.addAll(PQ1);
         difference.removeAll(PQ2);
         System.out.println("The difference of the two priority queues is ");
@@ -53,7 +53,7 @@ public class Exercise1 {
         System.out.println("");
 
         // intersection of the two priority queues
-        PriorityQueue<String> intersection = new PriorityQueue<>();
+        PriorityQueue<Integer> intersection = new PriorityQueue<>();
         intersection.addAll(PQ1);
         intersection.retainAll(PQ2);
         System.out.println("The intersection of the two priority queues is ");
